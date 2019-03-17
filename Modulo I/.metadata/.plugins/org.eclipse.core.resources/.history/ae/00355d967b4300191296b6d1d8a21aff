@@ -1,0 +1,15 @@
+package com.mitocode.mod1.model.entities;
+
+public class OrderItem {
+	private Integer quantity;
+	private Double price;
+	
+	private Product product;
+
+	/*
+	@Override
+	public String toString() {
+		return product.getName() + ", $" + String.format("%.2f", price) + ", Quantity: " + quantity + ", Subtotal: $"
+				+ String.format("%.2f", subTotal());
+	}*/
+}

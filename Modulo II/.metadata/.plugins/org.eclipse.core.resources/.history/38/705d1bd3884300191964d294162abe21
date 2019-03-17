@@ -1,0 +1,24 @@
+/**
+ * 
+ */
+package com.mitocode.mod2.services.impl;
+
+/**
+ * @author Usuario
+ *
+ */
+public class RentalService {
+
+	private double pricePerDay;
+	private double pricePerHour;
+	
+	private BrazilTaxService taxService;
+//	private PeruTaxService taxService1;
+
+	public RentalService(double pricePerDay, double pricePerHour, BrazilTaxService taxService) {
+		super();
+		this.pricePerDay = pricePerDay;
+		this.pricePerHour = pricePerHour;
+		this.taxService = new BrazilTaxService();
+	}
+}

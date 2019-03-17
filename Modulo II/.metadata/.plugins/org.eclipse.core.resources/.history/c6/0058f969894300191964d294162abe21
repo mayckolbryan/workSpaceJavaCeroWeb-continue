@@ -1,0 +1,41 @@
+/**
+ * 
+ */
+package com.mitocode.mod2.services.impl;
+
+import java.util.regex.Matcher;
+
+import com.mitocode.mod2.entities.CarRental;
+
+/**
+ * @author Usuario
+ *
+ */
+public class RentalService {
+
+	private double pricePerDay;
+	private double pricePerHour;
+	
+	private BrazilTaxService taxService;
+//	private PeruTaxService taxService1;
+
+	public RentalService(double pricePerDay, double pricePerHour, BrazilTaxService taxService) {
+		super();
+		this.pricePerDay = pricePerDay;
+		this.pricePerHour = pricePerHour;
+		this.taxService = new BrazilTaxService();
+	}
+	
+	public void proccesInvoice(CarRental carRental) {
+		long t1 = carRental.getStart().getTime();
+		long t2 = carRental.getStart().getTime();
+		double hours = (double)(t2 - t1) /1000 /60 /60;
+		
+		double basicPayment;
+		if (hours <= 12) {
+			basicPayment = pricePerHour * Math.ceil(hours);
+		}else {
+			basicPayment = pricePerHour * Math.ceil(hours / 24);
+		}
+	}
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;BrazilTaxService.java&apos; to &apos;App1/src/main/java/com.mitocode.mod2.services.impl&apos;&#x0D;&#x0A;- Original project: &apos;App1&apos;&#x0D;&#x0A;- Destination element: &apos;App1/src/main/java/com.mitocode.mod2.services.impl&apos;&#x0D;&#x0A;- Original element: &apos;com.mitocode.mod2.services.impl.BrazilTaxService.java&apos;" description="Copy compilation unit" destination="/src\/main\/java&lt;com.mitocode.mod2.services.impl" element1="/src\/main\/java&lt;com.mitocode.mod2.services.impl{BrazilTaxService.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1552259476026" units="1" version="1.0"/>
+</session>
