@@ -1,1 +1,13 @@
 Libro: Codigo Limpio.
+
+Datos:
+	- El puerto en WidFly para las aplicaciones es 8080.
+	- El puerto en WidFly para la consola Admin es 9990.(Para esto se requiere crear un usuario Enabled => usuario : admin)
+
+Comandos en VisorApp:
+	- mvn clean
+	- mvn compile
+	- mvn package
+	- mvn install
+
+	- mvn -Ptest package (ejecuta con el perfil indicado, esto es anivel de VisorCore)
