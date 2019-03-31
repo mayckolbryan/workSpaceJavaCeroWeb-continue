@@ -3,6 +3,18 @@ Libro: Codigo Limpio.
 Datos:
 	- El puerto en WidFly para las aplicaciones es 8080.
 	- El puerto en WidFly para la consola Admin es 9990.(Para esto se requiere crear un usuario Enabled => usuario : admin)
+	- JDBC necesita un Driver de Base de Datos y solo soporta SQL.
+	- El archivo beans.xml sirve para mapear las clases a manejar por el CDI y 
+	  a traves de la propiedad bean-discovery-mode="all" obliga a que las clases a manejar usen @Named.
+	- El @Inject es posterior a los EJB's (@Stateless).
+	- Los EJB's se usaban para la inyección de dependencias y para transacciones, que proporcionaban 
+	  acceso Local o Remoto de otros aplicativos pero hechos en JAVA, pero se usa mas comunmente en 
+	  la capa de Persistencia por funcionalidad transaccional.
+	- JSF: XHTML(Presentación) + Clase Java(Controller)
+	- JSF: posee ambientes para las variables a nivel de Controlador como @RequestScoped, @ViewScoped, @SessionScoped y @AplicationScoped.
+	- Toda clase en Java se crea con un constructor pero la Inyección de Dependencias se crea despues, en un @PostConstructor.
+	- ActionListener se enlasa a eventos que no devuelven un valor (void) y los Action si lo esperan.
+	- 
 
 Comandos en VisorApp:
 	- mvn clean

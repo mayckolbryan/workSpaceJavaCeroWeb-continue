@@ -1,0 +1,9 @@
+/Users/hamp/Desktop/Modulo 5/VisorMonolito/VisorCore/src/main/java/com/hampcode/util/Util.java
+/Users/hamp/Desktop/Modulo 5/VisorMonolito/VisorCore/src/main/java/com/hampcode/model/repository/JdbcRepository.java
+/Users/hamp/Desktop/Modulo 5/VisorMonolito/VisorCore/src/main/java/com/hampcode/model/repository/CategoryRepository.java
+/Users/hamp/Desktop/Modulo 5/VisorMonolito/VisorCore/src/main/java/com/hampcode/business/CategoryBusiness.java
+/Users/hamp/Desktop/Modulo 5/VisorMonolito/VisorCore/src/main/java/com/hampcode/model/repository/ConnectionDb.java
+/Users/hamp/Desktop/Modulo 5/VisorMonolito/VisorCore/src/main/java/com/hampcode/business/CrudBusiness.java
+/Users/hamp/Desktop/Modulo 5/VisorMonolito/VisorCore/src/main/java/com/hampcode/model/repository/impl/CategoryRepositoryImpl.java
+/Users/hamp/Desktop/Modulo 5/VisorMonolito/VisorCore/src/main/java/com/hampcode/model/entity/Category.java
+/Users/hamp/Desktop/Modulo 5/VisorMonolito/VisorCore/src/main/java/com/hampcode/business/impl/CategoryBusinessImpl.java

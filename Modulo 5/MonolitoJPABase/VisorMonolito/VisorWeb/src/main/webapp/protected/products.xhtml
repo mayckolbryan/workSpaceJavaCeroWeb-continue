@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/master.xhtml">
+		<ui:define name="content">
+			<h:form id="frm">
+				<p:growl id="men" />
+				<p:toolbar>
+					<f:facet name="right">
+						<p:commandButton value="Nuevo" icon="ui-icon-document"
+							actionListener="#{productController.cleanForm()}" 
+							update="@form"/>
+						<p:commandButton value="Guardar" icon="ui-icon-disk"
+							process="@this :frm:panGriPro"
+							actionListener="#{productController.saveProduct()}"
+							update=":frm:men :frm:datTabPro :frm:panGriPro" />
+						
+						<p:commandButton value="Editar" icon="ui-icon-pencil"
+							process="@this"
+							actionListener="#{productController.editProduct()}"
+							update=":frm:men :frm:panGriPro" />
+						
+					</f:facet>
+				</p:toolbar>
+				<p:panelGrid id="panGriPro" columns="2" style="width:100%">
+					<p:outputLabel value="Categoria:" for="cmbCate" />
+					<p:selectOneMenu id="cmbCate" required="true" effect="drop"
+						value="#{productController.category}"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem itemLabel="Seleccione una opción"
+							noSelectionOption="true" itemValue="" />
+						<f:selectItems value="#{productController.categories}"
+							var="Cate" itemLabel="#{Cate.name}" itemValue="#{Cate}" />
+					</p:selectOneMenu>
+					<p:outputLabel value="Nombre:" for="txtNomPro" />
+					<p:inputText id="txtNomPro" required="true" maxlength="45"
+						value="#{productController.product.name}" />
+					<p:outputLabel value="Precio:" for="spiPrePro" />
+					<p:inputText id="spiPrePro" 
+						value="#{productController.product.price}" />
+				</p:panelGrid>
+				<br></br>
+				<p:dataTable id="datTabPro"
+					emptyMessage="No existen productos registrados"
+					value="#{productController.products}" var="pro" paginator="true"
+					rows="10" selectionMode="single" rowKey="#{pro.id}">
+					<f:facet name="header">
+						<p:outputLabel value="Lista de Productos" />
+					</f:facet>
+					<p:ajax event="rowSelect"
+						listener="#{productController.selecProduct}" />
+					<p:column headerText="id">
+						<p:outputLabel value="#{pro.id}" />
+					</p:column>
+					<p:column headerText="Nombre">
+						<p:outputLabel value="#{pro.name}" />
+					</p:column>
+					<p:column headerText="Precio">
+						<p:outputLabel value="#{pro.price}" />
+					</p:column>
+					<p:column headerText="Tipo Producto">
+						<p:outputLabel value="#{pro.category.name}" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
