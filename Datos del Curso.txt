@@ -14,7 +14,10 @@ Datos:
 	- JSF: posee ambientes para las variables a nivel de Controlador como @RequestScoped, @ViewScoped, @SessionScoped y @AplicationScoped.
 	- Toda clase en Java se crea con un constructor pero la Inyección de Dependencias se crea despues, en un @PostConstructor.
 	- ActionListener se enlasa a eventos que no devuelven un valor (void) y los Action si lo esperan.
-	- 
+	- JPA: es la definición de las tecnologías de persistencia, ademas dentro del JAVA EE 
+	  existe una implementación de esta llamada JPA 2.1 dependiendo de la version. Hibernate es un Framework de implementacion 
+	  de JPA que a diferencia de la implementacion del API JPA, esta posee mas herramientas.
+	  Asimismo JSF tambien es una definicion que posee su implementación API JSF.
 
 Comandos en VisorApp:
 	- mvn clean

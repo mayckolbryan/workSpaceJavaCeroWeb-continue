@@ -1,0 +1,20 @@
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+	<persistence-unit name="visorPU" transaction-type="JTA">
+		<jta-data-source>java:/VisorDS</jta-data-source>
+		<!-- <jta-data-source>java:/${datasource.name}</jta-data-source> -->
+		
+		<!-- <exclude-unlisted-classes>false</exclude-unlisted-classes> Con esta configuración ya no es necesaria listar las entidades, asume que son todas las que tengan anotaciones @Entity-->
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		
+		<!-- javax.persistence.schema-generation.database.action : elimina y crea la base de datos-->
+		<properties>
+			<property
+				name="javax.persistence.schema-generation.database.action"
+				value="drop-and-create" />
+		</properties>
+	</persistence-unit>
+</persistence>

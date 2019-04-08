@@ -1,0 +1,9 @@
+Anotaciones Asociaciones JPA
+https://www.oscarblancarteblog.com/tutoriales/java-persistence-api-jpa/
+https://www.tutorialspoint.com/es/jpa/jpa_entity_relationships.htm
+https://www.oscarblancarteblog.com/2018/12/20/relaciones-onetomany/
+https://www.oscarblancarteblog.com/2018/12/27/relaciones-manytomany/
+https://www.oscarblancarteblog.com/2018/12/20/relaciones-onetomany/
+https://www.oscarblancarteblog.com/2018/12/14/relaciones-onetoone/
+https://www.oscarblancarteblog.com/2018/12/13/personalizar-las-relaciones-con-joincolumn/
+https://www.oscarblancarteblog.com/2018/12/06/relacion-muchos-a-uno-con-manytoone/
