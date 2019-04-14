@@ -18,6 +18,9 @@ Datos:
 	  existe una implementación de esta llamada JPA 2.1 dependiendo de la version. Hibernate es un Framework de implementacion 
 	  de JPA que a diferencia de la implementacion del API JPA, esta posee mas herramientas.
 	  Asimismo JSF tambien es una definicion que posee su implementación API JSF.
+	- El atributo "process" de <p:commandButton> de PrimeFaces es necesario para indicar los valores a procesar en el ciclo de vida
+	  del JSF en el envio del formulario(parcial). Asimismo es crucial incluir tambien el mismo componenete en el atributo de proceso (@this)
+	  especialmente si se desea invocar la acción asociada al componente
 
 Comandos en VisorApp:
 	- mvn clean
