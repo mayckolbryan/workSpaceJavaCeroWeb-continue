@@ -1,0 +1,16 @@
+Ejercicio 1
+
+En una empresa se requiere calcular el salario semanal de cada uno de sus empleados el salario se obtiene de la siguiente forma 
+
+Si el empleado trabaja 40 horas o menos se le  paga S/45 por hora.
+Si trabaja mas de 40 horas se le paga S/.45 por cada una de las primeras 40 horas y S/20 por horas extras.
+
+
+
+Ejercicio 2
+
+llevar el control de los ingresos es una actividad importante para  no presentar inconvenientes económicos y evitar malgastar el dinero. Sin embargo, poco o nada es el tiempo que se dedica a realizar esta tarea, que por lo general tomaría dos minutos registrar en un cuadro de Excel, un cuaderno o en una hoja que se tenga destinada para esta función.
+
+Se solicita implementar una aplicación que permita  el registro de nuestros ingresos y egresos indicando, ademas debe mostrar el presupuesto disponible .
+
+Pd: Para el ingreso y egreso solo se solicita una descripción y el valor.

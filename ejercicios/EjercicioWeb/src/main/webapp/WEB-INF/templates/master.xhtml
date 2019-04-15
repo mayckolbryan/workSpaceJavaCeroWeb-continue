@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title><ui:insert name="pageTitle">Page Title</ui:insert></title>
+
+</h:head>
+
+<body>
+	<ui:insert name="header">
+		<h:form>
+			<p:menubar autoDisplay="false">
+
+				<p:submenu label="Mantenedores" icon="ui-icon-pencil">
+					<p:menuitem icon="ui-icon-document" value="Clientes"
+						url="/protected/customers.xhtml" />
+
+					<p:menuitem icon="ui-icon-document" value="Categorias"
+						url="/protected/categorys.xhtml" />
+					<p:menuitem icon="ui-icon-document" value="Productos"
+						url="/protected/products.xhtml" />
+
+
+				</p:submenu>
+
+				<p:submenu label="Ordenes" icon="ui-icon-pencil">
+					<p:menuitem icon="ui-icon-document" value="Generar"
+						url="/protected/orders.xhtml" />
+
+				</p:submenu>
+
+			</p:menubar>
+		</h:form>
+	</ui:insert>
+
+	<ui:insert name="content">
+
+	</ui:insert>
+
+
+	<ui:insert name="footer">
+		<div>Copyright © HAMP, 2019. Todos los derechos reservados</div>
+	</ui:insert>
+</body>
+
+</html>
