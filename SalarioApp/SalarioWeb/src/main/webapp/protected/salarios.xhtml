@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+		<h:form id="frm">
+			<p:growl id="men" />
+			<p:toolbar>
+				<f:facet name="right">
+					<p:commandButton value="Nuevo" icon="ui-icon-document"
+						actionListener="#{salarioController.clearForm()}" update="@form" />
+					<p:commandButton value="Guardar" icon="ui-icon-disk"
+						process="@this :frm:panGriSalario"
+						actionListener="#{salarioController.saveSalario()}"
+						update=":frm:men :frm:datTabSalario :frm:panGriSalario" />
+					<p:commandButton value="Editar" icon="ui-icon-pencil"
+						process="@this"
+						actionListener="#{salarioController.editSalario()}"
+						update=":frm:men :frm:panGriSalario" />
+				</f:facet>
+			</p:toolbar>
+			<p:panelGrid id="panGriSalario" columns="2" style="width:100%">
+				<p:outputLabel value="Nombre:" for="txtName" />
+				<p:inputText id="txtName" required="true" maxlength="100"
+					value="#{salarioController.salario.nombre}" />
+					
+				<p:outputLabel value="Horas:" for="txtHora" />
+				<p:inputNumber id="txtHora" required="true" maxlength="4"
+					value="#{salarioController.salario.hora}" />
+			</p:panelGrid>
+			<br></br>
+
+			<p:dataTable id="datTabSalario"
+				emptyMessage="No existen categorias registrados"
+				value="#{salarioController.salarios}" var="salario"
+				paginator="true" rows="10" selectionMode="single"
+				rowKey="#{salario.id}">
+				<f:facet name="header">
+					<p:outputLabel value="Lista de Salarios" />
+				</f:facet>
+				<p:ajax event="rowSelect"
+					listener="#{salarioController.selectSalario}" />
+
+				<p:column headerText="Id">
+					<p:outputLabel value="#{salario.id}" />
+				</p:column>
+				<p:column headerText="Nombre">
+					<p:outputLabel value="#{salario.nombre}" />
+				</p:column>
+				<p:column headerText="Horas">
+					<p:outputLabel value="#{salario.hora}" />
+				</p:column>
+				<p:column headerText="Sueldo">
+					<p:outputLabel value="#{salario.sueldo}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+
+</body>
+</html>
