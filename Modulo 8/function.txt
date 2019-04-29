@@ -1,0 +1,26 @@
+
+drop function fn_QuantityProductByCategory();
+
+CREATE OR REPLACE FUNCTION fn_QuantityProductByCategory() 
+ RETURNS TABLE (
+ quantity INT,
+ category TEXT
+) 
+AS $$
+DECLARE 
+    var_r record;
+BEGIN
+FOR var_r IN(
+	select (count(*)::int) as quantity, c.name as category 
+	from products p INNER JOIN categories c ON p.category_id =c.id
+	group by c.id, category order by category asc
+	)  
+ LOOP
+        quantity := var_r.quantity; 
+ 		category := var_r.category;
+        RETURN NEXT;
+ END LOOP;
+END; $$ 
+LANGUAGE 'plpgsql';
+
+SELECT * FROM fn_QuantityProductByCategory();

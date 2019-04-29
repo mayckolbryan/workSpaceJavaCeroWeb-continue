@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/master.xhtml">
+		<ui:define name="content">
+			<h:form id="frm">
+				<p:growl id="men" />
+				<p:toolbar>
+					<f:facet name="right">
+
+						<p:commandButton value="Guardar" icon="icon_save"
+							process="@this :frm:panGriCabOrder"
+							actionListener="#{orderController.saveOrder()}"
+							update=":frm:men :frm:panGriCabOrder" />
+					</f:facet>
+
+					<f:facet name="left">
+						<p:outputLabel value="Administración de Ordenes" />
+					</f:facet>
+
+				</p:toolbar>
+				<br></br>
+
+				<p:panelGrid id="panGriCabOrder" columns="4" style="width:100%">
+
+					<p:outputLabel value="Fecha:" />
+					<p:calendar id="calFecFac"
+						value="#{orderController.order.createAt}" />
+
+					<p:outputLabel for="txtIdeCli" value="Dni Cliente:" />
+					<h:panelGroup>
+						<p:inputText id="txtIdeCli" maxlength="13" required="true"
+							value="#{orderController.customer.dni}" />
+						<p:commandButton icon="ui-icon-search"
+							process="@this :frm:txtIdeCli"
+							actionListener="#{orderController.findCustomerByDni()}"
+							update=":frm:txtNomCli
+							:frm:txaDirCli 
+							:frm:men" />
+					</h:panelGroup>
+
+					<p:outputLabel value="Nombres:" />
+					<p:inputText id="txtNomCli" readonly="true"
+						value="#{orderController.customer.name}" />
+					<p:outputLabel value="Dirección" />
+					<p:inputTextarea id="txaDirCli" readonly="true"
+						value="#{orderController.customer.address}" />
+				</p:panelGrid>
+
+				<br></br>
+
+				<p:toolbar>
+					<f:facet name="right">
+						<p:commandButton value="Añadir" icon="ui-icon-plus"
+							onclick="PF('diaAnaDetOrder').show();" />
+
+					</f:facet>
+				</p:toolbar>
+
+				<p:dataTable id="datTabDetOrder"
+					value="#{orderController.detailOrders}" var="detOr"
+					selectionMode="single" rowKey="#{detOr.id}">
+					<p:ajax event="rowSelect"
+						listener="#{orderController.detailOrderSel}" />
+					<p:column headerText="Producto">
+						<p:outputLabel value="#{detOr.product.name}" />
+					</p:column>
+					<p:column headerText="Cantidad">
+						<p:outputLabel value="#{detOr.quantity}" />
+					</p:column>
+					<p:column headerText="Precio">
+						<p:outputLabel value="#{detOr.price}" />
+					</p:column>
+					<p:column headerText="SubTotal">
+						<p:outputLabel value="#{detOr.amount}" />
+					</p:column>
+				</p:dataTable>
+
+
+				<p:dialog widgetVar="diaAnaDetOrder" showEffect="explode"
+					hideEffect="bounce" header="Añadir Detalle" width="450"
+					height="400">
+					<p:toolbar>
+						<f:facet name="right">
+							<p:commandButton value="Guardar"
+								process="@this :frm:panGriAnaDetOrder"
+								actionListener="#{orderController.addProductToDetail()}"
+								update=":frm:panGriAnaDetOrder :frm:datTabDetOrder :frm:men"
+								oncomplete="PF('diaAnaDetOrder').hide();" />
+							<p:commandButton value="Cancelar" process="@this"
+								update=":frm:panGriAnaDetOrder"
+								oncomplete="PF('diaAnaDetOrder').hide();" />
+						</f:facet>
+					</p:toolbar>
+					<br />
+
+					<p:panelGrid id="panGriAnaDetOrder" columns="2" style="width:100%">
+
+						<p:outputLabel value="Producto:" for="atxtProDetOrder" />
+
+						<p:selectOneMenu id="atxtProDetOrder" required="true"
+							effect="drop" value="#{orderController.product}"
+							converter="omnifaces.SelectItemsConverter" filter="true"
+							filterMatchMode="contains">
+							<f:selectItem itemLabel="Seleccione una opción"
+								noSelectionOption="true" itemValue="" />
+							<f:selectItems value="#{orderController.products}" var="pro"
+								itemLabel="#{pro.name}" itemValue="#{pro}" />
+							<p:ajax event="itemSelect"
+								listener="#{orderController.updatePriceProduct}"
+								update="frm:spiPreProDetOrder" />
+						</p:selectOneMenu>
+
+						<p:outputLabel value="Precio:" for="spiPreProDetOrder" />
+						<p:inputText id="spiPreProDetOrder" readonly="true"
+							value="#{orderController.detailOrder.price}" />
+						<p:outputLabel value="Cantidad:" for="spiCanDetOrder" />
+
+
+						<p:inputText id="spiCanDetOrder" required="true"
+							value="#{orderController.detailOrder.quantity}">
+							
+							<p:ajax event="keyup"
+								listener="#{orderController.calculateAmountDetail()}"
+								update=":frm:spiTotDetOrder" />
+						</p:inputText>
+
+
+
+						<p:outputLabel value="Total:" for="spiTotDetOrder" />
+						<p:spinner id="spiTotDetOrder" readonly="true"
+							value="#{orderController.detailOrder.amount}" />
+
+					</p:panelGrid>
+				</p:dialog>
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>
